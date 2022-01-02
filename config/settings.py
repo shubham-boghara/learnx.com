@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'content',
     'core',
     'books',
+    'froala_editor',
 ]
 
 MIDDLEWARE = [
@@ -108,3 +109,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+FROALA_EDITOR_OPTIONS = {
+  'key': '1C%kZV[IX)_SL}UJHAEFZMUJOYGYQE[\\ZJ]RAe(+%$==',
+  'attribution': False
+}

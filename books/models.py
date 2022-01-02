@@ -1,5 +1,6 @@
 from django.db import models
 from core import models as core_models
+from froala_editor.fields import FroalaField
 
 # Create your models here.
 
@@ -48,9 +49,9 @@ class File(core_models.TimeStampedModel):
       """ File  Model """ 
 
       title = models.CharField(max_length = 251)
-      description  = models.TextField()
+      description  = FroalaField()
       subject = models.ForeignKey("Subject", on_delete = models.CASCADE)
-      file = models.FileField(upload_to = "books_files")
+      file = models.FileField(upload_to = "books_files",null = True, blank = True)
       is_public = models.BooleanField(default = False)
 
 
