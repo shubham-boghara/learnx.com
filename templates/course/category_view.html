@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   {% for subcategory in subcategories_objs %}
+      {% for course in subcategory.courses.all %}
+      <a href = "{% url 'courses:resources' course.id course.slug  %}">
+        <p>{{course.title}}</p>
+      </a>
+      {% endfor %}
+   {% endfor %}
+
+{% endblock content %}
+

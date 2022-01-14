@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+       <p>gtu books</p>
+    <form action="{% url 'books:home_view' %}" method="GET">
+       <div class="row align-items-center">
+        <div class="col">
+            <div class = "select__field">
+                <label for="field-select">Choose a field:</label>
+                <select name="field" id="field-select" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                  <option value="">--Please select an field--</option>
+                  {% for field in fields %}
+                  <option value="{{field.field_name}}">{{field.field_name}}</option>
+                  {% endfor %} 
+                </select>
+              </div>
+        </div>
+        <div class="col">
+            <div class = "select__sem">
+                <label for="field-sem">Choose a sem:</label>
+                <select name="sem" id="field-sem" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option value="">--Please select an sem--</option>
+                    {% for sem in range_sem %}
+                    <option value="{{sem}}">{{sem}}</option>
+                    {% endfor %}   
+                </select>
+              </div>
+        </div>
+        <div class="col">
+            <div class = "select__year">
+                <label for="field-year">Choose a year:</label>
+                <select name = "year" id="field-year" class="form-select form-select-sm" aria-label=".form-select-sm example>
+                  <option value="">--Please select an year--</option>
+                  {% for year in range_year %}
+                  <option value="{{year}}">{{year}}</option>
+                  {% endfor %} 
+                </select>
+              </div>
+        </div>
+        <div class="col">
+            <div class = "submit">
+             <input class="btn btn-primary" type="submit" value="submit" />
+        </div>
+       </div>
+      </div>
+    </form>  
+    
+      {% for subject in subjects %}
+         <div class="card">
+            <div class="card-body">
+                <a href="{% url 'books:files_view' subject.id subject.name %}" ><p>{{subject.name}}</p></a>
+            </div>
+        </div>
+ 
+      {% endfor %}
+      
+   
+  </div>
+
+{% endblock content %}
